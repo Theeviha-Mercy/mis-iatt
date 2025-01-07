@@ -188,11 +188,14 @@ h5.mb-0::after {
         <!-- Breadcrumb -->
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#"><i class="bi bi-house"></i></a></li>
-                <li class="breadcrumb-item active" aria-current="page">Project Planner</li>
+              <li class="breadcrumb-item">
+                <a href="#" style="color: #03a093;"><i class="fas fa-home"></i></a> <!-- Icon with the same color -->
+                <span style="color: #03a093; margin: 0 5px;">/</span> <!-- Separator -->
+                <span style="color: #03a093;">Project Planner</span> <!-- Custom blue color #03a093 applied here -->
             </ol>
         </nav>
 
+          
         <!-- Project Planner Header -->
         <div class="card p-4">
             <div class="d-flex justify-content-between align-items-center">
@@ -205,113 +208,141 @@ h5.mb-0::after {
             </div>
         </div>
          <!-- Modal -->
-       <div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="projectModalLabel">Create Project</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="projectModalLabel">Create Project</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="projectName" class="form-label">Project Name *</label>
+              <input type="text" class="form-control" id="projectName" placeholder="Enter Project Name">
             </div>
-            <div class="modal-body">
-              <form>
-                <div class="row g-3">
-                  <div class="col-md-6">
-                    <label for="projectName" class="form-label">Project Name *</label>
-                    <input type="text" class="form-control" id="projectName" placeholder="Enter Project Name">
+            <div class="col-md-6">
+              <label for="version" class="form-label">Version *</label>
+              <select id="version" class="form-select">
+                <option selected>1.0</option>
+                <option value="1.1">1.1</option>
+                <option value="1.2">1.2</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="startDate" class="form-label">Start Date *</label>
+              <input type="date" class="form-control" id="startDate" value="2025-01-06">
+            </div>
+            <div class="col-md-6">
+              <label for="endDate" class="form-label">End Date *</label>
+              <input type="date" class="form-control" id="endDate" value="2025-01-06">
+            </div>
+            <div class="col-md-6">
+              <label for="clientName" class="form-label">Client Name</label>
+              <select id="clientName" class="form-select">
+                <option selected>-- Select Client --</option>
+                <option value="Client 1">Client 1</option>
+                <option value="Client 2">Client 2</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="estimateHours" class="form-label">Estimate Hours</label>
+              <input type="time" class="form-control" id="estimateHours" value="00:00">
+            </div>
+            <div class="col-md-6">
+              <label for="status" class="form-label">Status *</label>
+              <select id="status" class="form-select">
+                <option selected>Open</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="assignedGroup" class="form-label">Assigned Group</label>
+              <select id="assignedGroup" class="form-select">
+                <option selected>-- Select Assigned Group --</option>
+                <option value="Group 1">Group 1</option>
+                <option value="Group 2">Group 2</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="assignedTo" class="form-label">Assigned To</label>
+              <input type="text" class="form-control" id="assignedTo" placeholder="Unassigned">
+            </div>
+            <div class="col-md-6">
+              <label for="demoURL" class="form-label">Demo URL</label>
+              <input type="url" class="form-control" id="demoURL" placeholder="https://example.com">
+            </div>
+            <div class="col-md-6">
+              <label for="billingType" class="form-label">Billing Type</label>
+              <select id="billingType" class="form-select">
+                <option selected>-- Select Billing Type --</option>
+                <option value="Fixed Price">Fixed Price</option>
+                <option value="Hourly Rate">Hourly Rate</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="priceRate" class="form-label">Fixed Price ($)</label>
+              <input type="number" class="form-control" id="priceRate" placeholder="Enter Price Rate">
+            </div>
+            <div class="col-md-6">
+              <label for="autoProgress" class="form-label">Auto Progress</label>
+              <input type="range" class="form-range" id="autoProgress" min="1" max="100" step="1">
+              <div class="d-flex justify-content-between">
+                <span id="minValue">1</span>
+                <span id="maxValue">100</span>
+              </div>
+              <div>
+                <span>Current Value: <span id="currentValue">1</span></span>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <label for="projectLogo" class="form-label">Project Logo</label>
+              <input type="file" class="form-control" id="projectLogo">
+              <div style="text-align: center; margin-top: 10px;">
+                <i class="bi bi-wifi-2" style="background-color: #eff5f6; color: rgb(25, 195, 195); border-radius: 50%; padding: 4px; margin: 3px; font-size: 15px; border: 0.5px solid rgb(19, 20, 20);"></i>
+                <i class="bi bi-telephone" style="background-color: #eff5f6; color: rgb(25, 195, 195); border-radius: 50%; padding: 4px; margin: 3px; font-size: 15px; border: 0.5px solid rgb(19, 20, 20);"></i>
+                <i class="bi bi-android2" style="background-color: #eff5f6; color: rgb(25, 195, 195); border-radius: 50%; padding: 4px; margin:3px; font-size: 15px; border: 0.5px solid rgb(19, 20, 20);"></i>
+                <i class="bi bi-android" style="background-color: #eff5f6; color: rgb(25, 195, 195); border-radius: 50%; padding: 4px; margin: 3px; font-size: 15px; border: 0.5px solid rgb(19, 20, 20);"></i>
+                <i class="bi bi-apple" style="background-color: #eff5f6; color: rgb(25, 195, 195); border-radius: 50%; padding: 4px; margin: 3px; font-size: 15px; border: 0.5px solid rgb(19, 20, 20);"></i>
+                <i class="bi bi-cc-circle" style="background-color: #eff5f6; color: rgb(25, 195, 195); border-radius: 50%; padding: 4px; margin: 3px; font-size: 15px; border: 0.5px solid rgb(19, 20, 20);"></i>
+                <i class="bi bi-grid" style="background-color: #eff5f6; color: rgb(25, 195, 195); border-radius: 50%; padding: 4px; margin: 3px; font-size: 15px; border:0.5px solid rgb(19, 20, 20);"></i>
+                <i class="bi bi-cup-hot-fill" style="background-color: #eff5f6; color: rgb(25, 195, 195); border-radius: 50%; padding: 4px; margin:3px; font-size: 15px; border: 0.5px solid rgb(19, 20, 20);"></i>
+              </div>
+            </div>
+            <div class="col-12">
+              <div style="position: relative; background-color: white; border-radius: 5px; padding: 5px;">
+                <textarea class="form-control" id="description" rows="4" placeholder="Enter Description" style="background-color: #f9f9f9; border: 1px solid #ccc; padding-left: 50px;"></textarea>
+                <div style="position: absolute; top: 10px; left: 10px; display: flex; flex-wrap: wrap; gap: 5px;">
+                  <div style="background-color: white; border-radius: 5px; padding: 5px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+                    <i class="bi bi-bootstrap" style="font-size: 18px; color: #17a2b8;"></i>
                   </div>
-                  <div class="col-md-6">
-                    <label for="version" class="form-label">Version *</label>
-                    <select id="version" class="form-select">
-                      <option selected>1.0</option>
-                      <option value="1.1">1.1</option>
-                      <option value="1.2">1.2</option>
-                    </select>
+                  <div style="background-color: white; border-radius: 5px; padding: 5px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+                    <i class="bi bi-fonts" style="font-size: 18px; color: #17a2b8;"></i>
                   </div>
-                  <div class="col-md-6">
-                    <label for="startDate" class="form-label">Start Date *</label>
-                    <input type="date" class="form-control" id="startDate" value="2025-01-06">
+                  <div style="background-color: white; border-radius: 5px; padding: 5px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+                    <i class="bi bi-list" style="font-size: 18px; color: #17a2b8;"></i>
                   </div>
-                  <div class="col-md-6">
-                    <label for="endDate" class="form-label">End Date *</label>
-                    <input type="date" class="form-control" id="endDate" value="2025-01-06">
+
+                  <div style="background-color: white; border-radius: 5px; padding: 5px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+                    <i class="bi bi-list-task" style="font-size: 18px; color: #17a2b8;"></i>
                   </div>
-                  <div class="col-md-6">
-                    <label for="clientName" class="form-label">Client Name</label>
-                    <select id="clientName" class="form-select">
-                      <option selected>-- Select Client --</option>
-                      <option value="Client 1">Client 1</option>
-                      <option value="Client 2">Client 2</option>
-                    </select>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="estimateHours" class="form-label">Estimate Hours</label>
-                    <input type="time" class="form-control" id="estimateHours" value="00:00">
-                  </div>
-                  <div class="col-md-6">
-                    <label for="status" class="form-label">Status *</label>
-                    <select id="status" class="form-select">
-                      <option selected>Open</option>
-                      <option value="In Progress">In Progress</option>
-                      <option value="Completed">Completed</option>
-                    </select>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="assignedGroup" class="form-label">Assigned Group</label>
-                    <select id="assignedGroup" class="form-select">
-                      <option selected>-- Select Assigned Group --</option>
-                      <option value="Group 1">Group 1</option>
-                      <option value="Group 2">Group 2</option>
-                    </select>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="assignedTo" class="form-label">Assigned To</label>
-                    <input type="text" class="form-control" id="assignedTo" placeholder="Unassigned">
-                  </div>
-                  <div class="col-md-6">
-                    <label for="demoURL" class="form-label">Demo URL</label>
-                    <input type="url" class="form-control" id="demoURL" placeholder="https://example.com">
-                  </div>
-                  <div class="col-md-6">
-                    <label for="billingType" class="form-label">Billing Type</label>
-                    <select id="billingType" class="form-select">
-                      <option selected>-- Select Billing Type --</option>
-                      <option value="Fixed Price">Fixed Price</option>
-                      <option value="Hourly Rate">Hourly Rate</option>
-                    </select>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="priceRate" class="form-label">Fixed Price ($)</label>
-                    <input type="number" class="form-control" id="priceRate" placeholder="Enter Price Rate">
-                  </div>
-                  <div class="col-md-6">
-                    <label for="autoProgress" class="form-label">Auto Progress</label>
-                    <input type="range" class="form-range" id="autoProgress" min="1" max="100" step="1">
-                    <div class="d-flex justify-content-between">
-                      <span id="minValue">1</span>
-                      <span id="maxValue">100</span>
-                    </div>
-                    <div>
-                      <span>Current Value: <span id="currentValue">1</span></span>
-                    </div>
-                  </div>
-                  <div class="col-md-12">
-                    <label for="projectLogo" class="form-label">Project Logo</label>
-                    <input type="file" class="form-control" id="projectLogo">
-                  </div>
-                  <div class="col-12">
-                    <label for="description" class="form-label">Description</label>
-                    <textarea class="form-control" id="description" rows="4" placeholder="Enter Description"></textarea>
-                  </div>
+                  
+
                 </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color: #f3f4f6; color: black; border: 1px solid black; padding: 10px 20px; font-size: 24px; cursor: pointer; border-radius: 60px;">Close</button>
-                <button type="button" class="btn btn-primary">Save Project</button>
+              </div>
             </div>
           </div>
-        </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Create Project</button>
+          </div>
+        </form>
       </div>
+    </div>
+  </div>
+</div>
 
         <!-- Status Cards -->
         <div class="status-section mt-3">
@@ -381,3 +412,4 @@ h5.mb-0::after {
 </body>
 
 </html>
+
